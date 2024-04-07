@@ -1,6 +1,7 @@
 import json
 import random
 import sys
+from utilities import misc
 
 class Hangman:
     
@@ -58,7 +59,7 @@ class Hangman:
 
         # Randomly get a word at current level dictionary
         self.hidden_word = self.get_random_word()
-        self.guessed_word = self.obfuscate_word(self.hidden_word)
+        self.guessed_word = misc.obfuscate_word(self.hidden_word)
 
         print("--------------------------------------------------------------------------")
         print(" ")
@@ -147,14 +148,3 @@ class Hangman:
 
         word_array = self.words["level"+str(self.level)]
         return random.choice(word_array)
-    
-
-
-    def obfuscate_word(self, word):
-        """
-        Obfuscates a word by replacing each charachter with an *
-        """
-        return_str = ""
-        for char in word:
-            return_str += "*"        
-        return return_str
